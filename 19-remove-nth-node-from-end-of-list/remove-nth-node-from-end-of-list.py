@@ -5,7 +5,7 @@
 #         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        # 1st approach
+        # 1st approach two pass
 
         count = 0 # to find length of the list
         temp = head
@@ -17,13 +17,10 @@ class Solution:
         
         temp = head
         traverse_from_front = count - n # l-n
-        while traverse_from_front != 1:
+        while traverse_from_front != 1: # stop at node one before the node to be deleted
             temp = temp.next
             traverse_from_front -= 1
         
         del_node = temp.next
         temp.next = del_node.next
-        return head
-
-
-        
+        return head        
