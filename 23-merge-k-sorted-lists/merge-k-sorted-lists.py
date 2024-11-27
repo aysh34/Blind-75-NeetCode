@@ -15,16 +15,28 @@ class Solution:
             
 
     def merge2Lists(self,l1,l2):
-        dummy = ListNode()
-        temp = dummy # for traversal
-        while l1 and l2:
-            if l1.val<l2.val:
-                temp.next = l1
-                l1 = l1.next
-            else:
-                temp.next = l2
-                l2 = l2.next
-            temp = temp.next
+        # dummy = ListNode()
+        # temp = dummy # for traversal
+        # while l1 and l2:
+        #     if l1.val<l2.val:
+        #         temp.next = l1
+        #         l1 = l1.next
+        #     else:
+        #         temp.next = l2
+        #         l2 = l2.next
+        #     temp = temp.next
         
-        temp.next = l1 or l2 # in case of unequal lenghth, which ever is remaining
-        return dummy.next
+        # temp.next = l1 or l2 # in case of unequal lenghth, which ever is remaining
+        # return dummy.next
+        
+        if not l1: # recursive approach
+            return l2
+        if not l2:
+            return l1
+        if l1.val<l2.val:
+            l1.next = self.merge2Lists(l1.next,l2)
+            return l1
+        elif l2.val<=l1.val:
+            l2.next = self.merge2Lists(l2.next,l1)
+            return l2
+        
