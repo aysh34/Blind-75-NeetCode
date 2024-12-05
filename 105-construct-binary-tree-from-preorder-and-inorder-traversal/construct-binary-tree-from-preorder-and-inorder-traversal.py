@@ -8,6 +8,8 @@ class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         idx = [0]  # Use a list to hold the index as a reference
         n = len(inorder)
+        # inorder_map = {val: i for i, val in enumerate(inorder)}  # Hashmap for quick index lookup instead of findPosition()
+
         return self.solve(preorder,inorder,0,n-1,idx)
 
     def findPosition(self,inorder,element):
