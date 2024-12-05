@@ -6,18 +6,22 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        res = self.inOrder(root)
-        return res[k-1]
-        # c = 1
-        # for i in res:
-        #     if c == k:
-        #         return i
-        #     else:
-        #         c += 1
-    
-    def inOrder(self,root):
+        self.count = 0 # instance variables so they retain their values across recursive calls.
+        self.res = None
+        self.inOrder(root,k)
+        return self.res
+
+    def inOrder(self, root,k):
         if not root:
-            return []
-        return (
-            self.inOrder(root.left) + [root.val] + self.inOrder(root.right)
-        )
+            return
+        
+        self.inOrder(root.left,k)
+
+        self.count += 1 # visit current node
+        if self.count == k:
+            self.res = root.val 
+            return # stop further traversing
+
+        self.inOrder(root.right,k)
+    
+
