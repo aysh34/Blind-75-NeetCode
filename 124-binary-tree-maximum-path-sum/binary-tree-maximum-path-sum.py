@@ -6,17 +6,17 @@
 #         self.right = right
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        maxSum = float('-inf')
+        maxSum = float('-inf') # initialized to negative infinity
 
         def solve(root):
-            nonlocal maxSum
+            nonlocal maxSum # single shared maxSum variable across all recursive calls
             if not root:
                 return 0
             
             left = solve(root.left)
             right = solve(root.right)
 
-            path1 = left + right + root.val
+            path1 = left + right + root.val # three paths represent all possible ways to use the current node in a path
             path2 = max(left,right) + root.val
             path3 = root.val
 
