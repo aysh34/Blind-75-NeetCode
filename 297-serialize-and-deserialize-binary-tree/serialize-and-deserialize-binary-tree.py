@@ -56,31 +56,6 @@ class Codec:
             i += 1
 
         return root
-        
-    # class Codec: # recursive approach
-    # def serialize(self, root):
-    #     """Encodes a tree to a single string."""
-    #     def dfs(node):
-    #         if not node:
-    #             return "null"
-    #         return str(node.val) + "," + dfs(node.left) + "," + dfs(node.right)
-
-    #     return dfs(root)
-
-    # def deserialize(self, data):
-    #     """Decodes your encoded data to tree."""
-    #     def dfs(values):
-    #         value = values.pop(0)
-    #         if value == "null":
-    #             return None
-    #         node = TreeNode(int(value))
-    #         node.left = dfs(values)
-    #         node.right = dfs(values)
-    #         return node
-
-    #     values = data.split(",")
-    #     return dfs(values)
-
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
