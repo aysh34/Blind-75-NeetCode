@@ -1,18 +1,17 @@
-class Trie:
-    class TrieNode:
+class TrieNode:
         def __init__(self):
             self.isEnd = False
             self.children = [None] * 26
-
+class Trie:
     def __init__(self):
-        self.root = self.TrieNode()
+        self.root = TrieNode()
 
     def insert(self, word: str) -> None:
         node = self.root
         for ch in word:
             idx = ord(ch) - ord('a') # the index of a character relative to 'a'
             if not node.children[idx]:
-                node.children[idx] = self.TrieNode()
+                node.children[idx] = TrieNode()
             node = node.children[idx]
         node.isEnd = True # end of the valid word
         
